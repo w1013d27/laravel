@@ -1,0 +1,23 @@
+[mysqld_multi]
+ mysqld     = /usr/bin/mysqld_safe
+ mysqladmin = /usr/bin/mysqladmin
+ user       = multi_admin
+ password   = multipass
+
+ [mysqld1]
+ server-id=1
+ port        = 3306
+ pid-file    = /var/run/mysqld/mysqld.pid
+ socket      = /var/run/mysqld/mysqld.sock
+ datadir     = /var/lib/mysql
+ default_authentication_plugin=mysql_native_password
+ log-error   = /var/log/mysql/error.log
+
+ [mysqld2]
+ server-id=2
+ port        = 3307
+ pid-file    = /var/run/mysqld/mysqld_slave.pid
+ socket      = /var/run/mysqld/mysqld_slave.sock
+ datadir     = /var/lib/mysql_slave
+ default_authentication_plugin=mysql_native_password
+ log-error   = /var/log/mysql_slave/error.log
